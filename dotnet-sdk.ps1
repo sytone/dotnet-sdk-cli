@@ -99,6 +99,8 @@ switch ($command) {
         }
         $allReleases = @()
         $releaseMetadata | ForEach-Object {
+            $supportPhase = $_.SupportPhase
+            $endOfLifeDate = $_.EndOfLifeDate
             $versionReleases = (Invoke-WebRequest -UseBasicParsing -Uri $_.ReleasesJson).Content | ConvertFrom-Json
             $allReleases += $versionReleases.releases | Sort-Object -Property 'release-version' -Unique -Descending | ForEach-Object {
                 # Write-Host $_.sdk.files
@@ -106,6 +108,8 @@ switch ($command) {
                 [pscustomobject]@{
                     Version = $_.sdk.version
                     ReleaseDate = $_.'release-date'
+                    SupportPhase = $supportPhase
+                    EndOfLifeDate = $endOfLifeDate
                 }
             }
         }
