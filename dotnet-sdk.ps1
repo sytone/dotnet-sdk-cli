@@ -104,7 +104,7 @@ switch ($command) {
                 # Write-Host $_.sdk.files
                 # Write-Host $_
                 [pscustomobject]@{
-                    Version = $_.'release-version'
+                    Version = $_.sdk.version
                     ReleaseDate = $_.'release-date'
                 }
             }
@@ -139,7 +139,7 @@ switch ($command) {
                 
                 # Write-Host $_
                 [pscustomobject]@{
-                    Version = $_.'release-version'
+                    Version = $_.sdk.version
                     ReleaseDate = $_.'release-date'
                     File = $_.sdk.files
                 }
