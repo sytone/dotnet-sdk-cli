@@ -8,7 +8,7 @@ Copy the 'dotnet-sdk.cmd' and 'dotnet-sdk.ps1' files to a folder that is on your
 
 ## Usage
 
-``` PowerShell
+``` Text
 dotnet sdk [command]
 dotnet sdk [version]
 dotnet sdk get [version] [platform] [binarytype]
