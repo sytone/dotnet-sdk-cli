@@ -4,7 +4,7 @@ Adds a sdk command to the dotnet CLI tool to help with SDK download and version 
 
 ## Installation
 
-Copy the `dotnet-sdk.cmd` and `dotnet-sdk.ps1` files to a folder that is on your path use `$env:path` in powershell to validate.
+Copy the `dotnet-sdk.cmd` and `dotnet-sdk.ps1` files to a folder that is on your path use `$env:path` in powershell to validate location.
 
 ## Usage
 
