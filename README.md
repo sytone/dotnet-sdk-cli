@@ -6,7 +6,7 @@ Adds a sdk command to the dotnet CLI tool to help with SDK download and version 
 
 Copy the `dotnet-sdk.cmd` and `dotnet-sdk.ps1` files to a folder that is on your path use `$env:path` in powershell to validate location.
 
-You can use the following PowerShell commands, update the path to be a path in `$env:path`
+You can use the following PowerShell commands, update the path to be a path in `$env:path`. In this example `c:\tools` is a location I put custom tools and is always in my path.
 
 ```PowerShell
 ((new-object net.webclient).DownloadString(('https://raw.githubusercontent.com/sytone/dotnet-sdk-cli/master/dotnet-sdk.cmd?x={0}' -f (Get-Random)))) | Set-Content -Path "c:\tools\dotnet-sdk.cmd"
