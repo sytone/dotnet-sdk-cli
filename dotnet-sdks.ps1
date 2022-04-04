@@ -121,6 +121,13 @@ switch ($command) {
     'get' {
         if (-not $args[1]) {
             Write-Host "Please specify .Net Core SDK version. Use 'dotnet sdks all-releases' to see valid versions."
+            return
+        }
+
+        $installedSdks = Get-ChildItem "$env:programfiles\dotnet\sdk" | ForEach-Object { $_.Name }
+        if ($args[1] -in $installedSdks) {
+            Write-Host "The .NET Core SDK $($args[1]) is already installed."
+            return
         }
 
         $releaseMetadata = Get-Releases
@@ -153,9 +160,11 @@ switch ($command) {
                 Start-Process -FilePath $downloadName
             } else {
                 Write-Host "Error downloading from ($downloadUri) to ($downloadName) please try again"
+                return
             }
         } else {
             Write-Host "Please specify a valid .Net Core SDK version. Use 'dotnet sdks all-releases' to see valid versions."
+            return
         }
     }
     Default {
