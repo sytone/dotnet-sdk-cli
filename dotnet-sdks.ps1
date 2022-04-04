@@ -3,9 +3,9 @@ function ShowHelp () {
     $helpMessage = @"
 .NET Core SDK Switcher and Installer
 
-dotnet sdk [command]
-dotnet sdk [version]
-dotnet sdk get [version] [platform] [binarytype]
+dotnet sdks [command]
+dotnet sdks [version]
+dotnet sdks get [version] [platform] [binarytype]
 
  Basic Commands:
    latest        Switches to the latest .NET Core SDK version
@@ -118,7 +118,7 @@ switch ($command) {
     }        
     "get" {
         if(-not $args[1]) {
-            Write-Host "Please specify .Net Core SDK version. Use 'dotnet sdk all-releases' to see valid versions."
+            Write-Host "Please specify .Net Core SDK version. Use 'dotnet sdks all-releases' to see valid versions."
         } 
         $oldProgressPreference = $progressPreference
         $progressPreference = 'SilentlyContinue'
@@ -173,7 +173,7 @@ switch ($command) {
                 Write-Host "Error downloading from ($downloadUri) to ($downloadName) please try again"
             }
         } else {
-            Write-Host "Please specify a valid .Net Core SDK version. Use 'dotnet sdk all-releases' to see valid versions."
+            Write-Host "Please specify a valid .Net Core SDK version. Use 'dotnet sdks all-releases' to see valid versions."
         }
 
         $progressPreference = $oldProgressPreference
@@ -192,7 +192,7 @@ switch ($command) {
             $globalJsonContent | Set-Content -Path "./global.json"
         } else {
             Write-Host "The $command version of .Net Core SDK was not found"
-            Write-Host "Please, run 'dotnet sdk list' to make sure you have it installed in '$env:programfiles\dotnet\sdk'"
+            Write-Host "Please, run 'dotnet sdks list' to make sure you have it installed in '$env:programfiles\dotnet\sdk'"
 
         }
     }
