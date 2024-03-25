@@ -155,7 +155,12 @@ switch ($command) {
             $downloadUri = ($foundVersion.Files | Where-Object { $_.rid -eq $platform -and $_.name.Contains(".$binaryType") }).url
             $downloadName = ($foundVersion.Files | Where-Object { $_.rid -eq $platform -and $_.name.Contains(".$binaryType") }).name
             $downloadName = "$env:tmp/$version.$downloadName"
+            Write-Host "Downloading, please wait... ($downloadUri)"
+            $oldProgressPreference = $progressPreference
+            $progressPreference = 'SilentlyContinue'            
             Invoke-WebRequest -UseBasicParsing -Uri $downloadUri -OutFile $downloadName
+            $progressPreference = $oldProgressPreference
+
             if (Test-Path $downloadName) {
                 Start-Process -FilePath $downloadName
             } else {
